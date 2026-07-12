@@ -76,7 +76,12 @@ Firmware_Diy() {
 	
 	case "${OP_AUTHOR}/${OP_REPO}:${OP_BRANCH}" in
 	Lienol/openwrt:24.10)
-		cat >> ${Version_File} <<EOF
+		if [[ -n "${Version_File}" ]]; then
+		  cat >> "${Version_File}" <<EOF
+EOF
+		fi
+;;
+esac
 sed -i '/check_signature/d' /etc/opkg.conf
 if [ -z "\$(grep "REDIRECT --to-ports 53" /etc/firewall.user 2> /dev/null)" ]
 then
