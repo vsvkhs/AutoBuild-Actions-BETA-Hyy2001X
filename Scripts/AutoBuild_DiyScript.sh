@@ -102,6 +102,7 @@ EOF
 		rm -r ${FEEDS_LUCI}/luci-theme-argon*
 		AddPackage other vernesong OpenClash dev
 		AddPackage other jerrykuku luci-app-argon-config master
+		AddPackage luci-app-dnsfilter kiddin9 luci-app-dnsfilter main
 		AddPackage other sbwml luci-app-mosdns v5-lua
 		AddPackage themes jerrykuku luci-theme-argon 18.06
 		AddPackage themes thinktip luci-theme-neobird main
