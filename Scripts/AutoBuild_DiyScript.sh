@@ -75,13 +75,8 @@ Firmware_Diy() {
 	# merge_package <git_branch> <git_repo_url> <package_path> <target_path>..
 	
 	case "${OP_AUTHOR}/${OP_REPO}:${OP_BRANCH}" in
-	Lienol/openwrt:24.10)
-		if [[ -n "${Version_File}" ]]; then
-		  cat >> "${Version_File}" <<EOF
-EOF
-		fi
-;;
-esac
+	coolsnowwolf/lede:master)
+		cat >> ${Version_File} <<EOF
 sed -i '/check_signature/d' /etc/opkg.conf
 if [ -z "\$(grep "REDIRECT --to-ports 53" /etc/firewall.user 2> /dev/null)" ]
 then
@@ -97,6 +92,7 @@ then
 	echo '[ -n "\$(command -v ip6tables)" ] && ip6tables -t mangle -A PREROUTING -i pppoe -p tcp -m tcp --tcp-flags ACK,RST RST -j DROP' >> /etc/firewall.user
 fi
 exit 0
+EOF
 		# sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${FEEDS_PKG}/ttyd/files/ttyd.config
 		# sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 		# sed -i '/uci commit luci/i\uci set luci.main.mediaurlbase="/luci-static/argon-mod"' $(PKG_Finder d package default-settings)/files/zzz-default-settings
@@ -104,15 +100,13 @@ exit 0
 		git reset --hard 1627fd2c745e496134834a8fb8145ba0aa458ae9
 		
 		rm -r ${FEEDS_LUCI}/luci-theme-argon*
+		AddPackage luci-app-dnsfilter kiddin9 luci-app-dnsfilter main
 		AddPackage other vernesong OpenClash dev
 		AddPackage other jerrykuku luci-app-argon-config master
-		AddPackage luci-app-dnsfilter kiddin9 luci-app-dnsfilter main
 		AddPackage other sbwml luci-app-mosdns v5-lua
 		AddPackage themes jerrykuku luci-theme-argon 18.06
 		AddPackage themes thinktip luci-theme-neobird main
 		AddPackage msd_lite ximiTech luci-app-msd_lite main
-		AddPackage msd_lite ximiTech msd_lite main
-		AddPackage iptvhelper riverscn openwrt-iptvhelper master
 		rm -r ${FEEDS_PKG}/mosdns
 		rm -r ${FEEDS_LUCI}/luci-app-mosdns
 		rm -r ${FEEDS_PKG}/curl
