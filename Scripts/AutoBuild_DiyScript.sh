@@ -68,7 +68,7 @@ Firmware_Diy() {
 	# ${FEEDS_PKG}			OpenWrt 源码目录下的 package/feeds/packages 目录
 	# ${BASE_FILES}			OpenWrt 源码目录下的 package/base-files/files 目录
 
-	# AddPackage luci-app-dnsfilter kiddin9 openwrt-packages master
+	# AddPackage <package_path> <git_user> <git_repo> <git_branch>
 	# ClashDL <platform> <core_type> [dev/tun/meta]
 	# ReleaseDL <release_url> <file> <target_path>
 	# Copy <cp_from> <cp_to > <rename>
