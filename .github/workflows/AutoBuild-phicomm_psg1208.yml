@@ -16,7 +16,7 @@ on:
         default: '192.168.6.1'
       Tempoary_CONFIG:
         description: '配置文件 [可选]'
-        default: 'lienol24.10-psg1208.config'
+        default: ''
       Tempoary_FLAG:
         description: '固件标签 [可选]'
         default: ''
