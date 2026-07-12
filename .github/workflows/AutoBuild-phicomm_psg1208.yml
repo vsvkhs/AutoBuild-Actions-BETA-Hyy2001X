@@ -45,15 +45,15 @@ env:
 # 上传固件到 Github Releases
   UPLOAD_RELEASES: false
 # 上传固件到 Github Artifacts
-  UPLOAD_ARTIFACTS: false
+  UPLOAD_ARTIFACTS: true
 # 上传 bin 文件夹到 Github Artifacts
-  UPLOAD_BIN_ARTIFACTS: true
+  UPLOAD_BIN_ARTIFACTS: false
 # 删除无用文件以增加编译空间
   DELETE_USELESS_FILES: true
 # 删除早期的 workflow 任务
   DELETE_OLD_WORKFLOW: true
 # Cache 加速编译
-  CACHE_ACCELERATE: false
+  CACHE_ACCELERATE: true
 ### 结束
 ### 请按需求修改以上内容
 
@@ -88,7 +88,7 @@ jobs:
       if: env.DELETE_USELESS_FILES == 'true' && !cancelled()
       uses: easimon/maximize-build-space@master
       with: 
-        root-reserve-mb: 8192
+        root-reserve-mb: 2048
         swap-size-mb: 1
         remove-dotnet: 'true'
         remove-android: 'true'
